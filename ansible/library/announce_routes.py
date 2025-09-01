@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import itertools
 import math
 import os
 import yaml
