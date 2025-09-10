@@ -1047,49 +1047,56 @@ platform_tests/sfp/test_sfputil.py::test_check_sfputil_reset:
 #######################################
 ####    test_advanced_reboot      #####
 #######################################
-platform_tests/test_advanced_reboot.py:
+platform_tests/test_advanced_reboot.py::**:
   skip:
-    reason: "Unsupported platform / Skip in PR testing as taking too much time. / Warm reboot is not required for 202412"
+    reason: "Skip all advanced reboot tests on 202412 (warm reboot not required for backend ToRs)"
     conditions_logical_operator: or
     conditions:
-      - "platform in ['x86_64-arista_7050_qx32s']"
-      - "'dualtor' in topo_name and release in ['202012']"
-      - "asic_type in ['vs']"
       - "release in ['202412']"
 
-platform_tests/test_advanced_reboot.py::test_fast_reboot_from_other_vendor:
-  skip:
-    reason: "skip test_fast_reboot_from_other_vendor due to knonw issue, if xfail it, it will block other test cases / Unsupported platform / Warm reboot is not required for 202412"
-    conditions_logical_operator: or
-    conditions:
-      - "https://github.com/sonic-net/sonic-mgmt/issues/11007"
-      - "platform in ['x86_64-arista_7050_qx32s']"
-      - "'dualtor' in topo_name and release in ['202012']"
-      - "release in ['202412']"
+# platform_tests/test_advanced_reboot.py:
+#   skip:
+#     reason: "Unsupported platform / Skip in PR testing as taking too much time. / Warm reboot is not required for 202412"
+#     conditions_logical_operator: or
+#     conditions:
+#       - "platform in ['x86_64-arista_7050_qx32s']"
+#       - "'dualtor' in topo_name and release in ['202012']"
+#       - "asic_type in ['vs']"
+#       - "release in ['202412']"
 
-platform_tests/test_advanced_reboot.py::test_warm_reboot:
-  skip:
-    reason: "Skip in PR testing as taking too much time. / Warm reboot is not required for 202412"
-    conditions_logical_operator: or
-    conditions:
-      - "asic_type in ['vs'] and 't0' not in topo_name"
-      - "release in ['202412']"
+# platform_tests/test_advanced_reboot.py::test_fast_reboot_from_other_vendor:
+#   skip:
+#     reason: "skip test_fast_reboot_from_other_vendor due to knonw issue, if xfail it, it will block other test cases / Unsupported platform / Warm reboot is not required for 202412"
+#     conditions_logical_operator: or
+#     conditions:
+#       - "https://github.com/sonic-net/sonic-mgmt/issues/11007"
+#       - "platform in ['x86_64-arista_7050_qx32s']"
+#       - "'dualtor' in topo_name and release in ['202012']"
+#       - "release in ['202412']"
 
-platform_tests/test_advanced_reboot.py::test_warm_reboot_mac_jump:
-  skip:
-    reason: "Skip in PR testing as taking too much time. / Warm reboot is not required for 202412"
-    conditions_logical_operator: or
-    conditions:
-      - "asic_type in ['vs']"
-      - "release in ['202412']"
+# platform_tests/test_advanced_reboot.py::test_warm_reboot:
+#   skip:
+#     reason: "Skip in PR testing as taking too much time. / Warm reboot is not required for 202412"
+#     conditions_logical_operator: or
+#     conditions:
+#       - "asic_type in ['vs'] and 't0' not in topo_name"
+#       - "release in ['202412']"
 
-platform_tests/test_advanced_reboot.py::test_warm_reboot_sad:
-  skip:
-    reason: "Skip in PR testing as taking too much time. / Warm reboot is not required for 202412"
-    conditions_logical_operator: or
-    conditions:
-      - "asic_type in ['vs']"
-      - "release in ['202412']"
+# platform_tests/test_advanced_reboot.py::test_warm_reboot_mac_jump:
+#   skip:
+#     reason: "Skip in PR testing as taking too much time. / Warm reboot is not required for 202412"
+#     conditions_logical_operator: or
+#     conditions:
+#       - "asic_type in ['vs']"
+#       - "release in ['202412']"
+
+# platform_tests/test_advanced_reboot.py::test_warm_reboot_sad:
+#   skip:
+#     reason: "Skip in PR testing as taking too much time. / Warm reboot is not required for 202412"
+#     conditions_logical_operator: or
+#     conditions:
+#       - "asic_type in ['vs']"
+#       - "release in ['202412']"
 
 #######################################
 #####   test_cont_warm_reboot.py  #####
@@ -1336,3 +1343,33 @@ platform_tests/test_xcvr_info_in_db.py::test_xcvr_info_in_db:
     conditions:
       - "platform in ['x86_64-cel_e1031-r0']"
       - https://github.com/sonic-net/sonic-buildimage/issues/18231
+
+#######################################################################
+#####   test_bgp_slb_neighbor_persistence_across_advanced_reboot  #####
+#######################################################################
+bgp/test_bgp_slb.py::test_bgp_slb_neighbor_persistence_across_advanced_reboot:
+  skip:
+    reason: "Skip warm-reboot related BGP test on 202412 (backend ToRs)"
+    conditions_logical_operator: or
+    conditions:
+      - "release in ['202412']"
+
+##############################
+#####   test_wr_arp.py   #####
+##############################
+tests/arp/test_wr_arp.py::**:
+  skip:
+    reason: "Skip all ARP warm-reboot tests on 202412"
+    conditions_logical_operator: or
+    conditions:
+      - "release in ['202412']"
+
+###################################
+#####   test_warm_reboot.py   #####
+###################################
+tests/snappi_tests/reboot/test_warm_reboot.py::**:
+  skip:
+    reason: "Skip all Snappi warm-reboot tests on 202412"
+    conditions_logical_operator: or
+    conditions:
+      - "release in ['202412']"
