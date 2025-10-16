@@ -134,7 +134,7 @@ class GenerateGoldenConfigDBModule(object):
             golden_config_db["FLEX_COUNTER_TABLE"] = ori_config_db["FLEX_COUNTER_TABLE"]
             golden_config_db["FLEX_COUNTER_TABLE"].setdefault("PORT", {})["POLL_INTERVAL"] = "2000"
 
-            return json.dumps(golden_config_db, indent=4)
+        return json.dumps(golden_config_db, indent=4)
 
     def check_version_for_bmp(self):
         output_version = device_info.get_sonic_version_info()
