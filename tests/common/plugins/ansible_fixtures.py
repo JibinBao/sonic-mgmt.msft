@@ -13,6 +13,14 @@ except ImportError:
     # Nothing need to do for ansible-core 2.13
     pass
 
+try:
+    # Initialize ansible plugin loader to avoid issues with ansbile-core 2.18
+    from ansible.plugins.loader import init_plugin_loader
+    init_plugin_loader()
+except ImportError:
+    # Nothing need to do for ansible-core 2.13
+    pass
+
 
 # Here we override ansible_adhoc fixture from pytest-ansible plugin to overcome
 # scope limitation issue; since we want to be able to use ansible_adhoc in module/class scope
