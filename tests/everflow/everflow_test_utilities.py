@@ -16,7 +16,7 @@ import ptf.packet as packet
 from abc import abstractmethod
 from ptf.mask import Mask
 from tests.common.helpers.assertions import pytest_assert
-from tests.common.utilities import wait_until, check_msg_in_syslog, find_duthost_on_role
+from tests.common.utilities import wait_until, find_duthost_on_role
 from tests.common.helpers.constants import UPSTREAM_NEIGHBOR_MAP, DOWNSTREAM_NEIGHBOR_MAP
 import json
 
