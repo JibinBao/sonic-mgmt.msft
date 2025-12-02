@@ -934,6 +934,7 @@ class TestIngressEverflowIPv6(EverflowIPv6Tests):
     def mirror_type(self):
         return "ingress"
 
+
 class TestEgressEverflowIPv6(EverflowIPv6Tests):
     """Parameters for Egress Everflow IPv6 testing. (Egress ACLs/Egress Mirror)"""
     def acl_stage(self):
@@ -941,4 +942,3 @@ class TestEgressEverflowIPv6(EverflowIPv6Tests):
 
     def mirror_type(self):
         return "egress"
-
